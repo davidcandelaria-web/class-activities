@@ -80,7 +80,7 @@ button{border:0;border-radius:11px;padding:13px 18px;font-weight:bold;font-size:
 <button type="button" class="finish" onclick="finish();return false;">FINISH + GRADE</button>
 </div>
 
-<section id="results" class="card"><h2>Finished!</h2><div id="summary"></div><div id="details"></div><button type="button" class="download" onclick="downloadWork();return false;">DOWNLOAD MY COMPLETED WORK</button><div id="downloadHelp" style="display:none;margin-top:12px;padding:12px;background:#fff7ef;border-radius:10px"><b>If your school browser blocks the download:</b> <button type="button" onclick="openPrintable()" style="margin-top:8px;background:#287c78;color:white;width:100%">OPEN MY COMPLETED WORK IN A NEW TAB</button><div class="small" style="margin-top:6px">Then use the browser menu to Save or Print to PDF.</div></div></section>
+<section id="results" class="card"><h2>Finished!</h2><div id="summary"></div><div id="details"></div><button type="button" class="download" onclick="downloadWork();return false;">DOWNLOAD GRADED WORK</button><div id="downloadHelp" style="display:none;margin-top:12px;padding:12px;background:#fff7ef;border-radius:10px"><b>If your school browser blocks the download:</b> <button type="button" onclick="openPrintable()" style="margin-top:8px;background:#287c78;color:white;width:100%">OPEN MY COMPLETED WORK IN A NEW TAB</button><div class="small" style="margin-top:6px">Then use the browser menu to Save or Print to PDF.</div></div></section>
 </div>
 <script>
 const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
@@ -92,30 +92,44 @@ function update(){let groups=[...new Set($$('input[type=radio]').map(x=>x.name))
 function save(){try{let d={};$('input[type=radio]:checked').forEach(x=>d[x.name]=x.value);$('[data-required]').forEach(x=>d[x.id]=x.value);localStorage.setItem(key(),JSON.stringify(d))}catch(e){}}
 function load(){try{let d=JSON.parse(localStorage.getItem(key())||'{}');Object.keys(d).forEach(function(k){let v=d[k],radios=[].slice.call(document.querySelectorAll('input[name="'+k+'"]')),r=radios.find(function(x){return x.value===v});if(r)r.checked=true;let e=document.getElementById(k);if(e)e.value=v})}catch(e){}}
 document.addEventListener('change',update);document.addEventListener('input',update);
-function finish(){let groups=[...new Set($$('input[type=radio]').map(x=>x.name))];let missing=groups.filter(n=>!$('input[name="'+n+'"]:checked')).length+$$('[data-required]').filter(x=>!x.value.trim()).length;if(missing){if(!confirm('You still have '+missing+' unanswered item(s). Finish anyway?'))return}
-let correct=$$('input[type=radio][data-correct="1"]:checked').length,total=15;let academic=Math.round(correct/total*100);let completed=groups.filter(n=>$('input[name="'+n+'"]:checked')).length+$$('[data-required]').filter(x=>x.value.trim()).length;let all=groups.length+$$('[data-required]').length;let completion=Math.round(completed/all*100);
-graded=true;$('#activity').style.display='none';$('#results').style.display='block';
-$('#summary').innerHTML='<div class="scoregrid"><div class="score"><b>'+$('#studentName').value+'</b><br>'+$('#studentSection').value+'</div><div class="score"><b>'+correct+' / '+total+'</b><br>Academic score</div><div class="score"><b>'+academic+'%</b><br>Final %</div><div class="score"><b>'+completion+'%</b><br>Completion</div></div>';
-let rows=groups.map((n,i)=>{let c=$('input[name="'+n+'"]:checked'),ok=c&&c.dataset.correct==='1';return '<p><b>Q'+(i+1)+':</b> '+(c?c.value:'No answer')+' — '+(ok?'Correct':'Incorrect')+'</p>'}).join('');
-$('#details').innerHTML='<h3>Graded Answers</h3>'+rows+'<h3>Presentation Planner</h3><p><b>Artwork:</b> '+esc($('#arttitle').value)+'</p><p><b>Artist:</b> '+esc($('#artist').value)+'</p><p><b>Type:</b> '+esc($('#type').value)+'</p><p><b>Opinion:</b> '+esc($('#opinion').value)+'</p><p><b>Reason 1:</b> '+esc($('#r1').value)+'</p><p><b>Reason 2:</b> '+esc($('#r2').value)+'</p><p><b>Reason 3:</b> '+esc($('#r3').value)+'</p>';
-window.scrollTo(0,0)}
+function finish(){
+  var radios=document.querySelectorAll('input[type="radio"]');
+  var names={},groups=[],i;
+  for(i=0;i<radios.length;i++){if(!names[radios[i].name]){names[radios[i].name]=true;groups.push(radios[i].name);}}
+  var req=document.querySelectorAll('[data-required]');
+  var missing=0,answered=0,correct=0;
+  for(i=0;i<groups.length;i++){
+    var c=document.querySelector('input[name="'+groups[i]+'"]:checked');
+    if(!c){missing++;}else{answered++;if(c.getAttribute('data-correct')==='1')correct++;}
+  }
+  var plannerDone=0;
+  for(i=0;i<req.length;i++){if(String(req[i].value||'').replace(/^\s+|\s+$/g,'')){plannerDone++;}else{missing++;}}
+  if(missing && !window.confirm('You still have '+missing+' unanswered item(s). Finish anyway?'))return false;
+  var total=15,academic=Math.round(correct/total*100);
+  var all=groups.length+req.length,completion=Math.round((answered+plannerDone)/all*100);
+  document.getElementById('activity').style.display='none';
+  document.getElementById('results').style.display='block';
+  document.getElementById('summary').innerHTML='<div class="scoregrid"><div class="score"><b>'+esc(document.getElementById('studentName').value)+'</b><br>'+esc(document.getElementById('studentSection').value)+'</div><div class="score"><b>'+correct+' / '+total+'</b><br>Academic score</div><div class="score"><b>'+academic+'%</b><br>Final %</div><div class="score"><b>'+completion+'%</b><br>Completion</div></div>';
+  var rows='';
+  for(i=0;i<groups.length;i++){
+    var ch=document.querySelector('input[name="'+groups[i]+'"]:checked');
+    var ok=ch&&ch.getAttribute('data-correct')==='1';
+    rows+='<p><b>Q'+(i+1)+':</b> '+(ch?esc(ch.value):'No answer')+' — '+(ok?'Correct':'Incorrect')+'</p>';
+  }
+  document.getElementById('details').innerHTML='<h3>Graded Answers</h3>'+rows+'<h3>Presentation Planner</h3><p><b>Artwork:</b> '+esc(document.getElementById('arttitle').value)+'</p><p><b>Artist:</b> '+esc(document.getElementById('artist').value)+'</p><p><b>Type:</b> '+esc(document.getElementById('type').value)+'</p><p><b>Opinion:</b> '+esc(document.getElementById('opinion').value)+'</p><p><b>Reason 1:</b> '+esc(document.getElementById('r1').value)+'</p><p><b>Reason 2:</b> '+esc(document.getElementById('r2').value)+'</p><p><b>Reason 3:</b> '+esc(document.getElementById('r3').value)+'</p>';
+  window.scrollTo(0,0);
+  return false;
+}
+
 function esc(s){return (s||'').replace(/[&<>"]/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[m]))}
 function downloadWork(){
-  var student=document.getElementById('studentName').value||'Student';
-  var section=document.getElementById('studentSection').value||'Class';
-  var date=document.getElementById('studentDate').value||'';
-  var content='<!doctype html><html><head><meta charset="utf-8"><title>Completed Art Presentation</title><style>body{font-family:Arial,sans-serif;max-width:850px;margin:30px auto;padding:20px;color:#20343b}h1,h2,h3{color:#287c78}.box{border:1px solid #ccc;padding:16px;border-radius:10px}.score{margin:8px 0}</style></head><body><h1>Unit 4 · Pages 62–63 · Art Presentation</h1><div class="box"><p><b>Student:</b> '+esc(student)+'</p><p><b>Class:</b> '+esc(section)+'</p><p><b>Date:</b> '+esc(date)+'</p>'+document.getElementById('summary').innerHTML+document.getElementById('details').innerHTML+'</div></body></html>';
-  var filename='Page_62-63_'+student.replace(/[^a-z0-9]+/gi,'_')+'_'+section.replace(/[^a-z0-9]+/gi,'_')+'.html';
-  var a=document.createElement('a');
-  a.setAttribute('download',filename);
-  a.setAttribute('href','data:text/html;charset=utf-8,'+encodeURIComponent(content));
-  a.style.display='none';
-  document.body.appendChild(a);
-  a.click();
-  document.body.removeChild(a);
-  setTimeout(function(){
-    document.getElementById('downloadHelp').style.display='block';
-  },500);
+  var w=window.open('','_blank');
+  var student=esc(document.getElementById('studentName').value);
+  var section=esc(document.getElementById('studentSection').value);
+  var date=esc(document.getElementById('studentDate').value);
+  var html='<!doctype html><html><head><meta charset="utf-8"><title>Page 62-63 Completed Work</title><style>body{font-family:Arial,sans-serif;max-width:850px;margin:30px auto;padding:20px;color:#20343b}h1,h2,h3{color:#287c78}.note{padding:12px;background:#fff7ef;border:1px solid #ee7b3b;margin-bottom:18px}@media print{.note{display:none}}</style></head><body><div class="note"><b>Your graded work is ready.</b> Use Ctrl+P and choose Save as PDF, or print this page.</div><h1>Unit 4 · Pages 62–63 · Art Presentation</h1><p><b>Student:</b> '+student+' &nbsp; <b>Class:</b> '+section+' &nbsp; <b>Date:</b> '+date+'</p>'+document.getElementById('summary').innerHTML+document.getElementById('details').innerHTML+'</body></html>';
+  if(w){w.document.open();w.document.write(html);w.document.close();}else{document.getElementById('downloadHelp').style.display='block';alert('Your browser blocked the new tab. Please allow pop-ups for this page, then press DOWNLOAD again.');}
+  return false;
 }
 function openPrintable(){
   var content='<!doctype html><html><head><meta charset="utf-8"><title>Completed Art Presentation</title><style>body{font-family:Arial,sans-serif;max-width:850px;margin:30px auto;padding:20px}h1,h2,h3{color:#287c78}</style></head><body><h1>Unit 4 · Pages 62–63 · Art Presentation</h1>'+document.getElementById('summary').innerHTML+document.getElementById('details').innerHTML+'</body></html>';
