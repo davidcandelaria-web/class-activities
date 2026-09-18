@@ -80,7 +80,7 @@ button{border:0;border-radius:11px;padding:13px 18px;font-weight:bold;font-size:
 <button type="button" class="finish" onclick="finish();return false;">FINISH + GRADE</button>
 </div>
 
-<section id="results" class="card"><h2>Finished!</h2><div id="summary"></div><div id="details"></div><button type="button" class="download" onclick="downloadWork();return false;">DOWNLOAD</button></section>
+<section id="results" class="card"><h2>Finished!</h2><div id="summary"></div><div id="details"></div><button type="button" class="download" onclick="downloadWork();return false;">DOWNLOAD MY COMPLETED WORK</button><div id="downloadHelp" style="display:none;margin-top:12px;padding:12px;background:#fff7ef;border-radius:10px"><b>If your school browser blocks the download:</b> <button type="button" onclick="openPrintable()" style="margin-top:8px;background:#287c78;color:white;width:100%">OPEN MY COMPLETED WORK IN A NEW TAB</button><div class="small" style="margin-top:6px">Then use the browser menu to Save or Print to PDF.</div></div></section>
 </div>
 <script>
 const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
@@ -100,6 +100,27 @@ let rows=groups.map((n,i)=>{let c=$('input[name="'+n+'"]:checked'),ok=c&&c.datas
 $('#details').innerHTML='<h3>Graded Answers</h3>'+rows+'<h3>Presentation Planner</h3><p><b>Artwork:</b> '+esc($('#arttitle').value)+'</p><p><b>Artist:</b> '+esc($('#artist').value)+'</p><p><b>Type:</b> '+esc($('#type').value)+'</p><p><b>Opinion:</b> '+esc($('#opinion').value)+'</p><p><b>Reason 1:</b> '+esc($('#r1').value)+'</p><p><b>Reason 2:</b> '+esc($('#r2').value)+'</p><p><b>Reason 3:</b> '+esc($('#r3').value)+'</p>';
 window.scrollTo(0,0)}
 function esc(s){return (s||'').replace(/[&<>"]/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[m]))}
-function downloadWork(){let content='<!doctype html><meta charset="utf-8"><title>Completed Art Presentation</title><style>body{font-family:Arial;max-width:850px;margin:30px auto;padding:20px}h1,h2{color:#287c78}.box{border:1px solid #ccc;padding:16px;border-radius:10px}</style><h1>Unit 4 · Pages 62–63 · Art Presentation</h1><div class="box"><p><b>Student:</b> '+esc($('#studentName').value)+'</p><p><b>Class:</b> '+esc($('#studentSection').value)+'</p><p><b>Date:</b> '+esc($('#studentDate').value)+'</p>'+$('#summary').innerHTML+$('#details').innerHTML+'</div>';let b=new Blob([content],{type:'text/html'}),a=document.createElement('a');a.href=URL.createObjectURL(b);a.download='Page_62-63_'+$('#studentName').value.replace(/\s+/g,'_')+'_'+$('#studentSection').value.replace(/\s+/g,'_')+'.html';a.click();URL.revokeObjectURL(a.href)}
+function downloadWork(){
+  var student=document.getElementById('studentName').value||'Student';
+  var section=document.getElementById('studentSection').value||'Class';
+  var date=document.getElementById('studentDate').value||'';
+  var content='<!doctype html><html><head><meta charset="utf-8"><title>Completed Art Presentation</title><style>body{font-family:Arial,sans-serif;max-width:850px;margin:30px auto;padding:20px;color:#20343b}h1,h2,h3{color:#287c78}.box{border:1px solid #ccc;padding:16px;border-radius:10px}.score{margin:8px 0}</style></head><body><h1>Unit 4 · Pages 62–63 · Art Presentation</h1><div class="box"><p><b>Student:</b> '+esc(student)+'</p><p><b>Class:</b> '+esc(section)+'</p><p><b>Date:</b> '+esc(date)+'</p>'+document.getElementById('summary').innerHTML+document.getElementById('details').innerHTML+'</div></body></html>';
+  var filename='Page_62-63_'+student.replace(/[^a-z0-9]+/gi,'_')+'_'+section.replace(/[^a-z0-9]+/gi,'_')+'.html';
+  var a=document.createElement('a');
+  a.setAttribute('download',filename);
+  a.setAttribute('href','data:text/html;charset=utf-8,'+encodeURIComponent(content));
+  a.style.display='none';
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  setTimeout(function(){
+    document.getElementById('downloadHelp').style.display='block';
+  },500);
+}
+function openPrintable(){
+  var content='<!doctype html><html><head><meta charset="utf-8"><title>Completed Art Presentation</title><style>body{font-family:Arial,sans-serif;max-width:850px;margin:30px auto;padding:20px}h1,h2,h3{color:#287c78}</style></head><body><h1>Unit 4 · Pages 62–63 · Art Presentation</h1>'+document.getElementById('summary').innerHTML+document.getElementById('details').innerHTML+'</body></html>';
+  var w=window.open('','_blank');
+  if(w){w.document.open();w.document.write(content);w.document.close();}
+}
 
 </script></body></html>
