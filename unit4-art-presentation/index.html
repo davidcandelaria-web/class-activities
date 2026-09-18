@@ -16,9 +16,9 @@ button{border:0;border-radius:11px;padding:13px 18px;font-weight:bold;font-size:
 <header><div class="wrap"><div class="tag">UNIT 4 · PAGES 62–63</div><h1>Art Presentation Workpage</h1><p>Prepare a clear presentation about a work of art and practice reduced structure words.</p></div></header>
 <div class="wrap">
 <section id="start" class="card"><h2>Student Start</h2>
-<label>Student Name</label><input id="name">
-<label>Class / Section</label><input id="section">
-<label>Date</label><input id="date" type="date">
+<label>Student Name</label><input id="studentName">
+<label>Class / Section</label><input id="studentSection">
+<label>Date</label><input id="studentDate" type="date">
 <button id="startBtn" class="finish" style="margin-top:16px" type="button">START MY ACTIVITY</button></section>
 
 <div id="activity">
@@ -85,8 +85,8 @@ button{border:0;border-radius:11px;padding:13px 18px;font-weight:bold;font-size:
 <script>
 const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
 let graded=false;
-function key(){return 'art6263_'+($('#name').value.trim()||'student')+'_'+($('#section').value.trim()||'class')).toLowerCase().replace(/\W+/g,'_')}
-function start(){var n=document.getElementById('name'),sec=document.getElementById('section'),dt=document.getElementById('date');if(!n.value.trim()||!sec.value.trim()||!dt.value){alert('Please enter your name, class/section, and date.');return;}document.getElementById('start').style.display='none';document.getElementById('activity').style.display='block';try{load();}catch(e){}try{update();}catch(e){}window.scrollTo(0,0);}
+function key(){return 'art6263_'+($('#studentName').value.trim()||'student')+'_'+($('#studentSection').value.trim()||'class')).toLowerCase().replace(/\W+/g,'_')}
+function start(){var n=document.getElementById('studentName'),sec=document.getElementById('studentSection'),dt=document.getElementById('studentDate');if(!n.value.trim()||!sec.value.trim()||!dt.value){alert('Please enter your name, class/section, and date.');return;}document.getElementById('start').style.display='none';document.getElementById('activity').style.display='block';try{load();}catch(e){}try{update();}catch(e){}window.scrollTo(0,0);}
 function fields(){return [...$$('input[type=radio]'),...$$('[data-required]')]}
 function update(){let groups=[...new Set($$('input[type=radio]').map(x=>x.name))];let done=groups.filter(n=>$('input[name="'+n+'"]:checked')).length+$$('[data-required]').filter(x=>x.value.trim()).length;let total=groups.length+$$('[data-required]').length;let p=Math.round(done/total*100);$('#bar').style.width=p+'%';$('#pct').textContent=p+'%';save()}
 function save(){if($('#activity').style.display==='none')return;let d={};$$('input[type=radio]:checked').forEach(x=>d[x.name]=x.value);$$('[data-required]').forEach(x=>d[x.id]=x.value);localStorage.setItem(key(),JSON.stringify(d))}
@@ -95,17 +95,17 @@ document.addEventListener('change',update);document.addEventListener('input',upd
 function finish(){let groups=[...new Set($$('input[type=radio]').map(x=>x.name))];let missing=groups.filter(n=>!$('input[name="'+n+'"]:checked')).length+$$('[data-required]').filter(x=>!x.value.trim()).length;if(missing){if(!confirm('You still have '+missing+' unanswered item(s). Finish anyway?'))return}
 let correct=$$('input[type=radio][data-correct="1"]:checked').length,total=15;let academic=Math.round(correct/total*100);let completed=groups.filter(n=>$('input[name="'+n+'"]:checked')).length+$$('[data-required]').filter(x=>x.value.trim()).length;let all=groups.length+$$('[data-required]').length;let completion=Math.round(completed/all*100);
 graded=true;$('#activity').style.display='none';$('#results').style.display='block';
-$('#summary').innerHTML='<div class="scoregrid"><div class="score"><b>'+$('#name').value+'</b><br>'+$('#section').value+'</div><div class="score"><b>'+correct+' / '+total+'</b><br>Academic score</div><div class="score"><b>'+academic+'%</b><br>Final %</div><div class="score"><b>'+completion+'%</b><br>Completion</div></div>';
+$('#summary').innerHTML='<div class="scoregrid"><div class="score"><b>'+$('#studentName').value+'</b><br>'+$('#studentSection').value+'</div><div class="score"><b>'+correct+' / '+total+'</b><br>Academic score</div><div class="score"><b>'+academic+'%</b><br>Final %</div><div class="score"><b>'+completion+'%</b><br>Completion</div></div>';
 let rows=groups.map((n,i)=>{let c=$('input[name="'+n+'"]:checked'),ok=c&&c.dataset.correct==='1';return '<p><b>Q'+(i+1)+':</b> '+(c?c.value:'No answer')+' — '+(ok?'Correct':'Incorrect')+'</p>'}).join('');
 $('#details').innerHTML='<h3>Graded Answers</h3>'+rows+'<h3>Presentation Planner</h3><p><b>Artwork:</b> '+esc($('#arttitle').value)+'</p><p><b>Artist:</b> '+esc($('#artist').value)+'</p><p><b>Type:</b> '+esc($('#type').value)+'</p><p><b>Opinion:</b> '+esc($('#opinion').value)+'</p><p><b>Reason 1:</b> '+esc($('#r1').value)+'</p><p><b>Reason 2:</b> '+esc($('#r2').value)+'</p><p><b>Reason 3:</b> '+esc($('#r3').value)+'</p>';
 window.scrollTo(0,0)}
 function esc(s){return (s||'').replace(/[&<>"]/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[m]))}
-function downloadWork(){let content='<!doctype html><meta charset="utf-8"><title>Completed Art Presentation</title><style>body{font-family:Arial;max-width:850px;margin:30px auto;padding:20px}h1,h2{color:#287c78}.box{border:1px solid #ccc;padding:16px;border-radius:10px}</style><h1>Unit 4 · Pages 62–63 · Art Presentation</h1><div class="box"><p><b>Student:</b> '+esc($('#name').value)+'</p><p><b>Class:</b> '+esc($('#section').value)+'</p><p><b>Date:</b> '+esc($('#date').value)+'</p>'+$('#summary').innerHTML+$('#details').innerHTML+'</div>';let b=new Blob([content],{type:'text/html'}),a=document.createElement('a');a.href=URL.createObjectURL(b);a.download='Page_62-63_'+$('#name').value.replace(/\s+/g,'_')+'_'+$('#section').value.replace(/\s+/g,'_')+'.html';a.click();URL.revokeObjectURL(a.href)}
+function downloadWork(){let content='<!doctype html><meta charset="utf-8"><title>Completed Art Presentation</title><style>body{font-family:Arial;max-width:850px;margin:30px auto;padding:20px}h1,h2{color:#287c78}.box{border:1px solid #ccc;padding:16px;border-radius:10px}</style><h1>Unit 4 · Pages 62–63 · Art Presentation</h1><div class="box"><p><b>Student:</b> '+esc($('#studentName').value)+'</p><p><b>Class:</b> '+esc($('#studentSection').value)+'</p><p><b>Date:</b> '+esc($('#studentDate').value)+'</p>'+$('#summary').innerHTML+$('#details').innerHTML+'</div>';let b=new Blob([content],{type:'text/html'}),a=document.createElement('a');a.href=URL.createObjectURL(b);a.download='Page_62-63_'+$('#studentName').value.replace(/\s+/g,'_')+'_'+$('#studentSection').value.replace(/\s+/g,'_')+'.html';a.click();URL.revokeObjectURL(a.href)}
 
 document.getElementById('startBtn').addEventListener('click',function(){
-  var n=document.getElementById('name').value.trim();
-  var sec=document.getElementById('section').value.trim();
-  var dt=document.getElementById('date').value;
+  var n=document.getElementById('studentName').value.trim();
+  var sec=document.getElementById('studentSection').value.trim();
+  var dt=document.getElementById('studentDate').value;
   if(!n||!sec||!dt){alert('Please enter your name, class/section, and date.');return;}
   document.getElementById('start').style.display='none';
   document.getElementById('activity').style.display='block';
