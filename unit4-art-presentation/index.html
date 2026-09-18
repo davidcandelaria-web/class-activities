@@ -19,7 +19,7 @@ button{border:0;border-radius:11px;padding:13px 18px;font-weight:bold;font-size:
 <label>Student Name</label><input id="name">
 <label>Class / Section</label><input id="section">
 <label>Date</label><input id="date" type="date">
-<button class="finish" style="margin-top:16px" onclick="start()">START MY ACTIVITY</button></section>
+<button id="startBtn" class="finish" style="margin-top:16px" type="button">START MY ACTIVITY</button></section>
 
 <div id="activity">
 <div class="card"><div style="display:flex;justify-content:space-between"><b>Progress</b><span id="pct">0%</span></div><div class="progress"><div id="bar" class="bar"></div></div><div class="small">Progress shows completion only. Correctness is hidden until you finish.</div></div>
@@ -101,4 +101,16 @@ $('#details').innerHTML='<h3>Graded Answers</h3>'+rows+'<h3>Presentation Planner
 window.scrollTo(0,0)}
 function esc(s){return (s||'').replace(/[&<>"]/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[m]))}
 function downloadWork(){let content='<!doctype html><meta charset="utf-8"><title>Completed Art Presentation</title><style>body{font-family:Arial;max-width:850px;margin:30px auto;padding:20px}h1,h2{color:#287c78}.box{border:1px solid #ccc;padding:16px;border-radius:10px}</style><h1>Unit 4 · Pages 62–63 · Art Presentation</h1><div class="box"><p><b>Student:</b> '+esc($('#name').value)+'</p><p><b>Class:</b> '+esc($('#section').value)+'</p><p><b>Date:</b> '+esc($('#date').value)+'</p>'+$('#summary').innerHTML+$('#details').innerHTML+'</div>';let b=new Blob([content],{type:'text/html'}),a=document.createElement('a');a.href=URL.createObjectURL(b);a.download='Page_62-63_'+$('#name').value.replace(/\s+/g,'_')+'_'+$('#section').value.replace(/\s+/g,'_')+'.html';a.click();URL.revokeObjectURL(a.href)}
+
+document.getElementById('startBtn').addEventListener('click',function(){
+  var n=document.getElementById('name').value.trim();
+  var sec=document.getElementById('section').value.trim();
+  var dt=document.getElementById('date').value;
+  if(!n||!sec||!dt){alert('Please enter your name, class/section, and date.');return;}
+  document.getElementById('start').style.display='none';
+  document.getElementById('activity').style.display='block';
+  document.getElementById('bar').style.width='0%';
+  document.getElementById('pct').textContent='0%';
+  window.scrollTo(0,0);
+});
 </script></body></html>
