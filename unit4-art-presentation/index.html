@@ -77,10 +77,10 @@ button{border:0;border-radius:11px;padding:13px 18px;font-weight:bold;font-size:
 <label>Reason 3</label><input data-required="1" id="r3" placeholder="Example: The subject has an interesting story.">
 </section>
 
-<button class="finish" onclick="finish()">FINISH + GRADE</button>
+<button type="button" class="finish" onclick="finish();return false;">FINISH + GRADE</button>
 </div>
 
-<section id="results" class="card"><h2>Finished!</h2><div id="summary"></div><div id="details"></div><button class="download" onclick="downloadWork()">DOWNLOAD</button></section>
+<section id="results" class="card"><h2>Finished!</h2><div id="summary"></div><div id="details"></div><button type="button" class="download" onclick="downloadWork();return false;">DOWNLOAD</button></section>
 </div>
 <script>
 const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
@@ -89,8 +89,8 @@ function key(){return 'art6263_'+($('#studentName').value.trim()||'student')+'_'
 function start(){var n=document.getElementById('studentName'),sec=document.getElementById('studentSection'),dt=document.getElementById('studentDate');if(!n.value.trim()||!sec.value.trim()||!dt.value){alert('Please enter your name, class/section, and date.');return;}document.getElementById('start').style.display='none';document.getElementById('activity').style.display='block';try{load();}catch(e){}try{update();}catch(e){}window.scrollTo(0,0);}
 function fields(){return [...$$('input[type=radio]'),...$$('[data-required]')]}
 function update(){let groups=[...new Set($$('input[type=radio]').map(x=>x.name))];let done=groups.filter(n=>$('input[name="'+n+'"]:checked')).length+$$('[data-required]').filter(x=>x.value.trim()).length;let total=groups.length+$$('[data-required]').length;let p=Math.round(done/total*100);$('#bar').style.width=p+'%';$('#pct').textContent=p+'%';save()}
-function save(){if($('#activity').style.display==='none')return;let d={};$$('input[type=radio]:checked').forEach(x=>d[x.name]=x.value);$$('[data-required]').forEach(x=>d[x.id]=x.value);localStorage.setItem(key(),JSON.stringify(d))}
-function load(){let d=JSON.parse(localStorage.getItem(key())||'{}');Object.entries(d).forEach(([k,v])=>{let radios=[...document.querySelectorAll('input[name="'+k+'"]')];let r=radios.find(x=>x.value===v);if(r)r.checked=true;let e=document.getElementById(k);if(e)e.value=v})}
+function save(){try{let d={};$('input[type=radio]:checked').forEach(x=>d[x.name]=x.value);$('[data-required]').forEach(x=>d[x.id]=x.value);localStorage.setItem(key(),JSON.stringify(d))}catch(e){}}
+function load(){try{let d=JSON.parse(localStorage.getItem(key())||'{}');Object.keys(d).forEach(function(k){let v=d[k],radios=[].slice.call(document.querySelectorAll('input[name="'+k+'"]')),r=radios.find(function(x){return x.value===v});if(r)r.checked=true;let e=document.getElementById(k);if(e)e.value=v})}catch(e){}}
 document.addEventListener('change',update);document.addEventListener('input',update);
 function finish(){let groups=[...new Set($$('input[type=radio]').map(x=>x.name))];let missing=groups.filter(n=>!$('input[name="'+n+'"]:checked')).length+$$('[data-required]').filter(x=>!x.value.trim()).length;if(missing){if(!confirm('You still have '+missing+' unanswered item(s). Finish anyway?'))return}
 let correct=$$('input[type=radio][data-correct="1"]:checked').length,total=15;let academic=Math.round(correct/total*100);let completed=groups.filter(n=>$('input[name="'+n+'"]:checked')).length+$$('[data-required]').filter(x=>x.value.trim()).length;let all=groups.length+$$('[data-required]').length;let completion=Math.round(completed/all*100);
