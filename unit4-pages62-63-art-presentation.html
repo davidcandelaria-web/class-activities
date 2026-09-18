@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Unit 4 · Pages 62–63 · Art Presentation</title>
+<style>
+:root{--ink:#20343b;--teal:#287c78;--orange:#ee7b3b;--paper:#fff;--bg:#f3f8f7;--line:#cfe0dd}
+*{box-sizing:border-box}body{margin:0;font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:var(--ink)}
+header{background:linear-gradient(135deg,#fff7ef,#e9f7f5);padding:24px;border-bottom:4px solid var(--orange)}
+.wrap{max-width:900px;margin:auto;padding:18px}.card{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:20px;margin:16px 0;box-shadow:0 4px 14px #0001}
+h1{margin:0;font-size:30px}h2{color:var(--teal);margin:0 0 10px}.tag{display:inline-block;background:var(--orange);color:white;font-weight:bold;padding:5px 9px;border-radius:8px;margin-bottom:8px}
+label{font-weight:bold;display:block;margin:12px 0 5px}input,select,textarea{width:100%;padding:11px;border:2px solid #c8d8d5;border-radius:10px;font-size:16px;background:white}
+textarea{min-height:76px}.q{padding:13px 0;border-top:1px solid #e7efed}.q:first-of-type{border-top:0}.opts label{font-weight:normal;display:block;padding:7px;border-radius:8px}.opts input{width:auto;margin-right:8px}
+.progress{height:14px;background:#dfe9e7;border-radius:9px;overflow:hidden}.bar{height:100%;width:0;background:var(--teal);transition:.2s}.small{font-size:13px;color:#5b6d70}
+button{border:0;border-radius:11px;padding:13px 18px;font-weight:bold;font-size:16px;cursor:pointer}.finish{background:var(--orange);color:#fff;width:100%}.download{background:var(--teal);color:#fff;width:100%;margin-top:10px}
+#activity,#results{display:none}.scoregrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px}.score{background:#edf7f5;padding:12px;border-radius:10px;text-align:center}
+</style></head><body>
+<header><div class="wrap"><div class="tag">UNIT 4 · PAGES 62–63</div><h1>Art Presentation Workpage</h1><p>Prepare a clear presentation about a work of art and practice reduced structure words.</p></div></header>
+<div class="wrap">
+<section id="start" class="card"><h2>Student Start</h2>
+<label>Student Name</label><input id="name">
+<label>Class / Section</label><input id="section">
+<label>Date</label><input id="date" type="date">
+<button class="finish" style="margin-top:16px" onclick="start()">START MY ACTIVITY</button></section>
+
+<div id="activity">
+<div class="card"><div style="display:flex;justify-content:space-between"><b>Progress</b><span id="pct">0%</span></div><div class="progress"><div id="bar" class="bar"></div></div><div class="small">Progress shows completion only. Correctness is hidden until you finish.</div></div>
+
+<section class="card" data-sec="A"><h2>Part A · Presentation Goal</h2>
+<p>A strong art presentation identifies the artwork and artist, gives an opinion, and supports that opinion with reasons and examples.</p>
+<div class="q"><b>1. What should a strong art presentation include?</b><div class="opts">
+<label><input type="radio" name="q1" value="a">Only the price of the artwork</label>
+<label><input type="radio" name="q1" value="b" data-correct="1">The artwork, artist, opinion, and supporting reasons</label>
+<label><input type="radio" name="q1" value="c">Only a description of colors</label></div></div>
+<div class="q"><b>2. Why should a speaker give reasons?</b><div class="opts">
+<label><input type="radio" name="q2" value="a">To make the presentation longer</label>
+<label><input type="radio" name="q2" value="b">To avoid giving an opinion</label>
+<label><input type="radio" name="q2" value="c" data-correct="1">To support and explain an opinion</label></div></div>
+</section>
+
+<section class="card" data-sec="B"><h2>Part B · Model: The Mona Lisa</h2><p>Use the model topic to identify the kind of information a presentation should contain.</p>
+<div class="q"><b>3. The Mona Lisa is best classified as a…</b><div class="opts">
+<label><input type="radio" name="q3" value="a" data-correct="1">painting</label><label><input type="radio" name="q3" value="b">sculpture</label><label><input type="radio" name="q3" value="c">photograph</label></div></div>
+<div class="q"><b>4. Who created the Mona Lisa?</b><div class="opts">
+<label><input type="radio" name="q4" value="a">Vincent van Gogh</label><label><input type="radio" name="q4" value="b" data-correct="1">Leonardo da Vinci</label><label><input type="radio" name="q4" value="c">Pablo Picasso</label></div></div>
+<div class="q"><b>5. Which is the strongest supporting reason for an opinion about art?</b><div class="opts">
+<label><input type="radio" name="q5" value="a">“It just is.”</label><label><input type="radio" name="q5" value="b" data-correct="1">“The shading makes the face look realistic.”</label><label><input type="radio" name="q5" value="c">“Everyone must agree with me.”</label></div></div>
+</section>
+
+<section class="card" data-sec="C"><h2>Part C · Reduced Structure Words</h2>
+<p>In unstressed structure words, sounds may become shorter or weaker. Vowels can reduce to a schwa sound, some vowels may be omitted, and the initial /h/ in some pronouns can be dropped in connected speech.</p>
+<div class="q"><b>6. What often happens to unstressed structure words?</b><div class="opts">
+<label><input type="radio" name="q6" value="a">They become louder</label><label><input type="radio" name="q6" value="b" data-correct="1">They are shortened or reduced</label><label><input type="radio" name="q6" value="c">They are always deleted</label></div></div>
+<div class="q"><b>7. Which sound is commonly used in reduced vowels?</b><div class="opts">
+<label><input type="radio" name="q7" value="a">/iː/</label><label><input type="radio" name="q7" value="b">/uː/</label><label><input type="radio" name="q7" value="c" data-correct="1">schwa /ə/</label></div></div>
+<div class="q"><b>8. In fast connected speech, the beginning /h/ in “him” or “her” may…</b><div class="opts">
+<label><input type="radio" name="q8" value="a" data-correct="1">be dropped</label><label><input type="radio" name="q8" value="b">be doubled</label><label><input type="radio" name="q8" value="c">become stressed</label></div></div>
+</section>
+
+<section class="card" data-sec="D"><h2>Part D · Structure Words in Context</h2>
+<p>Choose the structure word that best completes each sentence from the model presentation.</p>
+<div class="q"><b>9. The work ___ art that I chose is the Mona Lisa.</b><div class="opts"><label><input type="radio" name="q9" value="of" data-correct="1">of</label><label><input type="radio" name="q9" value="at">at</label><label><input type="radio" name="q9" value="for">for</label></div></div>
+<div class="q"><b>10. It’s ___ painting, the Mona Lisa, by Leonardo da Vinci.</b><div class="opts"><label><input type="radio" name="q10" value="a" data-correct="1">a</label><label><input type="radio" name="q10" value="an">an</label><label><input type="radio" name="q10" value="the">the</label></div></div>
+<div class="q"><b>11. It’s ___ really great work of art.</b><div class="opts"><label><input type="radio" name="q11" value="a" data-correct="1">a</label><label><input type="radio" name="q11" value="to">to</label><label><input type="radio" name="q11" value="for">for</label></div></div>
+<div class="q"><b>12. ___ my opinion, it is very realistic.</b><div class="opts"><label><input type="radio" name="q12" value="For">For</label><label><input type="radio" name="q12" value="In" data-correct="1">In</label><label><input type="radio" name="q12" value="At">At</label></div></div>
+<div class="q"><b>13. One reason is ___ it looks real.</b><div class="opts"><label><input type="radio" name="q13" value="that" data-correct="1">that</label><label><input type="radio" name="q13" value="of">of</label><label><input type="radio" name="q13" value="to">to</label></div></div>
+<div class="q"><b>14. The woman ___ the picture looks like a real person.</b><div class="opts"><label><input type="radio" name="q14" value="in" data-correct="1">in</label><label><input type="radio" name="q14" value="on">on</label><label><input type="radio" name="q14" value="for">for</label></div></div>
+<div class="q"><b>15. The artist used a technique called sfumato because ___ wanted softer transitions.</b><div class="opts"><label><input type="radio" name="q15" value="he" data-correct="1">he</label><label><input type="radio" name="q15" value="it">it</label><label><input type="radio" name="q15" value="we">we</label></div></div>
+</section>
+
+<section class="card" data-sec="E"><h2>Part E · My Art Presentation Planner</h2>
+<p>Choose one artwork to research. Complete this planner in your own words.</p>
+<label>Artwork title</label><input data-required="1" id="arttitle">
+<label>Artist</label><input data-required="1" id="artist">
+<label>Type of art</label><select data-required="1" id="type"><option value="">Choose…</option><option>Painting</option><option>Sculpture</option><option>Photography</option><option>Street art</option><option>Digital art</option><option>Other</option></select>
+<label>My opinion</label><select data-required="1" id="opinion"><option value="">Choose…</option><option>I think it is powerful.</option><option>I think it is beautiful.</option><option>I think it is creative.</option><option>I think it is unusual.</option><option>I think it is interesting.</option></select>
+<label>Reason 1</label><input data-required="1" id="r1" placeholder="Example: The colors create a strong mood.">
+<label>Reason 2</label><input data-required="1" id="r2" placeholder="Example: The details make it look realistic.">
+<label>Reason 3</label><input data-required="1" id="r3" placeholder="Example: The subject has an interesting story.">
+</section>
+
+<button class="finish" onclick="finish()">FINISH + GRADE</button>
+</div>
+
+<section id="results" class="card"><h2>Finished!</h2><div id="summary"></div><div id="details"></div><button class="download" onclick="downloadWork()">DOWNLOAD</button></section>
+</div>
+<script>
+const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
+let graded=false;
+function key(){return 'art6263_'+($('#name').value.trim()||'student')+'_'+($('#section').value.trim()||'class')).toLowerCase().replace(/\W+/g,'_')}
+function start(){if(!$('#name').value.trim()||!$('#section').value.trim()||!$('#date').value){alert('Please enter your name, class/section, and date.');return}$('#start').style.display='none';$('#activity').style.display='block';load();update()}
+function fields(){return [...$$('input[type=radio]'),...$$('[data-required]')]}
+function update(){let groups=[...new Set($$('input[type=radio]').map(x=>x.name))];let done=groups.filter(n=>$('input[name="'+n+'"]:checked')).length+$$('[data-required]').filter(x=>x.value.trim()).length;let total=groups.length+$$('[data-required]').length;let p=Math.round(done/total*100);$('#bar').style.width=p+'%';$('#pct').textContent=p+'%';save()}
+function save(){if($('#activity').style.display==='none')return;let d={};$$('input[type=radio]:checked').forEach(x=>d[x.name]=x.value);$$('[data-required]').forEach(x=>d[x.id]=x.value);localStorage.setItem(key(),JSON.stringify(d))}
+function load(){let d=JSON.parse(localStorage.getItem(key())||'{}');Object.entries(d).forEach(([k,v])=>{let r=$('input[name="'+k+'"][value="'+CSS.escape(v)+'"]');if(r)r.checked=true;let e=document.getElementById(k);if(e)e.value=v})}
+document.addEventListener('change',update);document.addEventListener('input',update);
+function finish(){let groups=[...new Set($$('input[type=radio]').map(x=>x.name))];let missing=groups.filter(n=>!$('input[name="'+n+'"]:checked')).length+$$('[data-required]').filter(x=>!x.value.trim()).length;if(missing){if(!confirm('You still have '+missing+' unanswered item(s). Finish anyway?'))return}
+let correct=$$('input[type=radio][data-correct="1"]:checked').length,total=15;let academic=Math.round(correct/total*100);let completed=groups.filter(n=>$('input[name="'+n+'"]:checked')).length+$$('[data-required]').filter(x=>x.value.trim()).length;let all=groups.length+$$('[data-required]').length;let completion=Math.round(completed/all*100);
+graded=true;$('#activity').style.display='none';$('#results').style.display='block';
+$('#summary').innerHTML='<div class="scoregrid"><div class="score"><b>'+$('#name').value+'</b><br>'+$('#section').value+'</div><div class="score"><b>'+correct+' / '+total+'</b><br>Academic score</div><div class="score"><b>'+academic+'%</b><br>Final %</div><div class="score"><b>'+completion+'%</b><br>Completion</div></div>';
+let rows=groups.map((n,i)=>{let c=$('input[name="'+n+'"]:checked'),ok=c&&c.dataset.correct==='1';return '<p><b>Q'+(i+1)+':</b> '+(c?c.value:'No answer')+' — '+(ok?'Correct':'Incorrect')+'</p>'}).join('');
+$('#details').innerHTML='<h3>Graded Answers</h3>'+rows+'<h3>Presentation Planner</h3><p><b>Artwork:</b> '+esc($('#arttitle').value)+'</p><p><b>Artist:</b> '+esc($('#artist').value)+'</p><p><b>Type:</b> '+esc($('#type').value)+'</p><p><b>Opinion:</b> '+esc($('#opinion').value)+'</p><p><b>Reason 1:</b> '+esc($('#r1').value)+'</p><p><b>Reason 2:</b> '+esc($('#r2').value)+'</p><p><b>Reason 3:</b> '+esc($('#r3').value)+'</p>';
+window.scrollTo(0,0)}
+function esc(s){return (s||'').replace(/[&<>"]/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[m]))}
+function downloadWork(){let content='<!doctype html><meta charset="utf-8"><title>Completed Art Presentation</title><style>body{font-family:Arial;max-width:850px;margin:30px auto;padding:20px}h1,h2{color:#287c78}.box{border:1px solid #ccc;padding:16px;border-radius:10px}</style><h1>Unit 4 · Pages 62–63 · Art Presentation</h1><div class="box"><p><b>Student:</b> '+esc($('#name').value)+'</p><p><b>Class:</b> '+esc($('#section').value)+'</p><p><b>Date:</b> '+esc($('#date').value)+'</p>'+$('#summary').innerHTML+$('#details').innerHTML+'</div>';let b=new Blob([content],{type:'text/html'}),a=document.createElement('a');a.href=URL.createObjectURL(b);a.download='Page_62-63_'+$('#name').value.replace(/\s+/g,'_')+'_'+$('#section').value.replace(/\s+/g,'_')+'.html';a.click();URL.revokeObjectURL(a.href)}
+</script></body></html>
