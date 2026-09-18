@@ -89,7 +89,7 @@ function key(){return 'art6263_'+($('#studentName').value.trim()||'student')+'_'
 function start(){var n=document.getElementById('studentName'),sec=document.getElementById('studentSection'),dt=document.getElementById('studentDate');if(!n.value.trim()||!sec.value.trim()||!dt.value){alert('Please enter your name, class/section, and date.');return;}document.getElementById('start').style.display='none';document.getElementById('activity').style.display='block';try{load();}catch(e){}try{update();}catch(e){}window.scrollTo(0,0);}
 function fields(){return [...$$('input[type=radio]'),...$$('[data-required]')]}
 function update(){let groups=[...new Set($$('input[type=radio]').map(x=>x.name))];let done=groups.filter(n=>$('input[name="'+n+'"]:checked')).length+$$('[data-required]').filter(x=>x.value.trim()).length;let total=groups.length+$$('[data-required]').length;let p=Math.round(done/total*100);$('#bar').style.width=p+'%';$('#pct').textContent=p+'%';save()}
-function save(){try{let d={};$('input[type=radio]:checked').forEach(x=>d[x.name]=x.value);$('[data-required]').forEach(x=>d[x.id]=x.value);localStorage.setItem(key(),JSON.stringify(d))}catch(e){}}
+function save(){try{var d={},r=document.querySelectorAll('input[type=radio]:checked'),req=document.querySelectorAll('[data-required]'),i;for(i=0;i<r.length;i++){d[r[i].name]=r[i].value;}for(i=0;i<req.length;i++){d[req[i].id]=req[i].value;}localStorage.setItem(key(),JSON.stringify(d));}catch(e){}}
 function load(){try{let d=JSON.parse(localStorage.getItem(key())||'{}');Object.keys(d).forEach(function(k){let v=d[k],radios=[].slice.call(document.querySelectorAll('input[name="'+k+'"]')),r=radios.find(function(x){return x.value===v});if(r)r.checked=true;let e=document.getElementById(k);if(e)e.value=v})}catch(e){}}
 document.addEventListener('change',update);document.addEventListener('input',update);
 function finish(){
@@ -121,7 +121,7 @@ function finish(){
   return false;
 }
 
-function esc(s){return (s||'').replace(/[&<>"]/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[m]))}
+function esc(s){return String(s||'').replace(/[&<>"]/g,function(m){var map={'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'};return map[m];});}
 function downloadWork(){
   var w=window.open('','_blank');
   var student=esc(document.getElementById('studentName').value);
