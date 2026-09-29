@@ -15,13 +15,13 @@
 </style>
 </head>
 <body>
-<header><div class="head"><div class="eyebrow">Unit 5 · Why We Travel · Page 80</div><h1>Who Does the Pronoun Mean?</h1><p class="intro">Section D: Understand pronoun reference in “Surprising Benefits of Travel.”</p><span class="tag">One question at a time</span><span class="tag">24 responses</span><span class="tag">Finish · Grade · Download</span></div></header>
+<header><div class="head"><div class="eyebrow">Unit 5 · Why We Travel · Page 80</div><h1>Who Does the Pronoun Mean?</h1><p class="intro">Section D: Practice the pronoun-reference skill you copied from the board.</p><span class="tag">One question at a time</span><span class="tag">24 responses</span><span class="tag">Finish · Grade · Download</span></div></header>
 <main>
   <section class="card"><h2>Before you begin</h2>
-    <p><b>First, copy the Reading Skill box from the board into your notebook.</b> Your teacher will read the page 79 article aloud. Open the separate article file and keep it available while you answer.</p>
+    <p><b>First, copy the Reading Skill box from the board into your notebook.</b> Use the rule and examples in your notebook to answer the questions below. Each question also gives you the sentence you need.</p>
     <label for="student">Your full name</label><input id="student" autocomplete="name" placeholder="First and last name">
     <label for="section">Your section</label><input id="section" placeholder="For example: 7A">
-    <ol><li>Find the paragraph named in each question. Read the sentence with the pronoun and the sentence before it.</li><li>Ask: <b>Who or what does this pronoun replace?</b> Give the noun, not another pronoun.</li><li>For typed answers, enter a short noun phrase. Spelling and capitalization do not matter, but make your meaning clear.</li><li>Complete each question in order. Your answer saves on this computer under your name and section.</li><li>At the end, choose <b>Finish</b>, then <b>Grade</b>, then <b>Download</b>. Give the downloaded report to your teacher.</li></ol>
+    <ol><li>Read the example inside each question. Find the pronoun, then look for the noun it replaces.</li><li>Ask: <b>Who or what does this pronoun replace?</b> Give the noun, not another pronoun.</li><li>For typed answers, enter a short noun phrase. Spelling and capitalization do not matter, but make your meaning clear.</li><li>Complete each question in order. Your answer saves on this computer under your name and section.</li><li>At the end, choose <b>Finish</b>, then <b>Grade</b>, then <b>Download</b>. Give the downloaded report to your teacher.</li></ol>
     <p><strong id="count">0 / 24 answered</strong></p><div class="bar" aria-hidden="true"><span id="fill"></span></div><p class="muted small">You can return to this page on the same computer with the same name and section.</p>
   </section>
   <section id="work" class="card" aria-live="polite"><span id="part" class="tag"></span><strong id="position" style="float:right"></strong><h2 id="heading" style="margin-top:14px"></h2><p id="direction"></p><blockquote id="quote"></blockquote><p id="prompt" class="question"></p><label id="answerLabel" for="answer">Your answer</label><div id="answerArea"></div><p class="muted small note" id="review">Find the noun that the pronoun replaces.</p></section>
@@ -30,30 +30,339 @@
 <script>
 // Each item carries its own minimum active reading interval. The 24 intervals total 12 minutes.
 const items=[
-{part:'D · Apply',head:'Original page 80 question 1',dir:'Read paragraph 2 of the separate article. Find line 7 and the sentence just before it.',quote:'Researchers at the State University of New York looked at the health of a group of middle-aged men. They found that taking a vacation once a year reduced the men’s risk of heart disease.',q:'What does “They” refer to in paragraph 2?',type:'text',answers:['researchers','the researchers','researchers at the state university of new york','the researchers at the state university of new york'],seconds:30},
-{part:'D · Apply',head:'Original page 80 question 2',dir:'Read paragraph 3. Look at the sentence beginning “In fact” and the sentence before it.',quote:'They found that the managers continued to have lower stress levels. In fact, they still felt good six weeks after their vacations.',q:'What do “they” and “their” refer to in the “In fact” sentence?',type:'text',answers:['managers','the managers','40 managers','the 40 managers'],seconds:30},
-{part:'D · Apply',head:'Original page 80 question 3',dir:'Read paragraph 4. Find the sentence about managers rewarding people.',quote:'Managers like productive workers. They often reward them.',q:'What does “them” refer to?',type:'text',answers:['productive workers','the productive workers','workers','the workers'],seconds:30},
-{part:'D · Apply',head:'Original page 80 question 4',dir:'Read the beginning of paragraph 5. The pronoun is in its second sentence.',quote:'Traveling isn’t only fun. It’s also a way to strengthen your body and your mind.',q:'What does “It” refer to?',type:'text',answers:['traveling','travelling','travel','taking a trip'],seconds:30},
-{part:'Find the referent',head:'Look back at paragraph 2',dir:'The referent can be in the same sentence or the sentence before it.',quote:'The study compared two groups of women. One group traveled at least twice a year.',q:'What does “One group” mean?',options:['One of the two groups of women','One group of researchers','One group of middle-aged men'],key:0,seconds:30},
-{part:'Find the referent',head:'Look back at paragraph 2',dir:'Pay attention to the order in which the two groups are described.',quote:'One group traveled at least twice a year. The other group traveled once every six years. The first group had a much lower risk of heart disease.',q:'Which women does “The first group” mean?',options:['The women who traveled at least twice a year','The women who traveled once every six years','The women who never traveled'],key:0,seconds:30},
-{part:'Find the referent',head:'Look back at paragraph 2',dir:'Name the people described immediately before the pronoun.',quote:'Researchers looked at the health of a group of middle-aged men. They found that taking a vacation once a year reduced the men’s risk.',q:'Why does “They” mean the researchers here?',options:['The researchers are the people doing the study','The men wrote the article','The vacations measured the risk'],key:0,seconds:30},
-{part:'Find the referent',head:'Look back at paragraph 3',dir:'Compare the pronoun with the group whose stress levels were measured.',quote:'They measured the stress levels of 40 managers. Then they told the managers to take a short vacation.',q:'Who does “they” refer to in “Then they told the managers”?',options:['The researchers in Austria','The 40 managers','The travelers in paragraph 1'],key:0,seconds:30},
-{part:'Find the referent',head:'Look back at paragraph 3',dir:'Look for the noun directly before “their.”',quote:'After the managers came home, the researchers measured their stress levels again.',q:'Whose stress levels are “their stress levels”?',options:['The managers’ stress levels','The researchers’ stress levels','All travelers’ stress levels'],key:0,seconds:30},
-{part:'Find the referent',head:'Look back at paragraph 3',dir:'Check who continued to have lower stress levels.',quote:'They found that the managers continued to have lower stress levels. In fact, they still felt good six weeks after their vacations.',q:'Who still felt good six weeks later?',options:['The managers','The researchers','The people who only planned a trip'],key:0,seconds:30},
-{part:'Find the referent',head:'Look back at paragraph 4',dir:'Read the noun at the end of the first sentence.',quote:'Many workers worry that going on vacation will affect their careers. They feel they must work all the time to keep their job.',q:'Who does the first “They” mean?',options:['Many workers','The vacations','The careers'],key:0,seconds:30},
-{part:'Find the referent',head:'Look back at paragraph 4',dir:'Both pronouns refer to different groups. Find the object of “reward.”',quote:'Managers like productive workers. They often reward them.',q:'Who does “They” mean in the second sentence?',options:['Managers','Productive workers','Vacations'],key:0,seconds:30},
-{part:'Explain the evidence',head:'Paragraph 2',dir:'Read both sentences and choose the clue that settles the meaning.',quote:'The study compared two groups of women. One group traveled at least twice a year. The other group traveled once every six years.',q:'What clue tells us that “The other group” means women?',options:['The study compared two groups of women','The study mentioned a university','The article has a photograph'],key:0,seconds:30},
-{part:'Explain the evidence',head:'Paragraph 3',dir:'Choose the noun that makes the meaning of the highlighted pronoun clear.',quote:'The managers’ stress levels were much lower. The researchers kept measuring every day. They found that the managers continued to have lower stress levels.',q:'Who does “They” mean in the last sentence?',options:['The researchers','The managers','The stress levels'],key:0,seconds:30},
-{part:'Explain the evidence',head:'Paragraph 3',dir:'A pronoun can refer to a noun several words earlier.',quote:'A 2014 study showed that people feel less stressed just thinking about possible trips. They feel happy even if those trips don’t really happen.',q:'Who does “They” mean?',options:['People thinking about possible trips','The possible trips','The researchers from paragraph 2'],key:0,seconds:30},
-{part:'Explain the evidence',head:'Paragraph 4',dir:'Follow the repeated word “workers” through the sentences.',quote:'Workers who go on vacation usually come back happier. Managers like productive workers. They often reward them.',q:'Which choice best replaces “them” without changing the meaning?',options:['productive workers','managers','vacations'],key:0,seconds:30},
-{part:'Explain the evidence',head:'Paragraph 4',dir:'The pronoun refers to a person’s own career.',quote:'Many workers worry that going on vacation will affect their careers.',q:'Whose careers are “their careers”?',options:['Many workers’ careers','Managers’ careers','Researchers’ careers'],key:0,seconds:30},
-{part:'Explain the evidence',head:'Paragraph 5',dir:'Use the previous sentence to identify the idea represented by “It.”',quote:'Traveling isn’t only fun. It’s also a way to strengthen your body and your mind.',q:'Which rewritten sentence preserves the meaning?',options:['Traveling is also a way to strengthen your body and mind.','Fun is also a way to strengthen your body and mind.','A lifetime is also a way to strengthen your body and mind.'],key:0,seconds:30},
-{part:'Repair the sentence',head:'Make the meaning clear',dir:'Replace the pronoun with a clear noun phrase.',quote:'The researchers measured the managers’ stress levels. They found lower stress levels afterward.',q:'In this context, who found the lower stress levels?',options:['The researchers','The managers','The stress levels'],key:0,seconds:30},
-{part:'Repair the sentence',head:'Make the meaning clear',dir:'Use the article’s meaning, even if more than one noun is nearby.',quote:'Managers like productive workers. They often reward them.',q:'Which rewrite is clearest?',options:['Managers often reward productive workers.','Productive workers often reward managers.','Vacations often reward managers.'],key:0,seconds:30},
-{part:'Repair the sentence',head:'Make the meaning clear',dir:'Decide whether the pronoun points to the trip or to the people.',quote:'People feel happy when they plan a trip, even if the trip never happens.',q:'Who does “they” mean?',options:['People planning a trip','Trips','Vacations'],key:0,seconds:30},
-{part:'Repair the sentence',head:'Make the meaning clear',dir:'Check the subject before the pronoun.',quote:'Traveling can improve your mood. It may also help you relax.',q:'What does “It” mean?',options:['Traveling','Your mood','You'],key:0,seconds:30},
-{part:'Your final check',head:'Apply the skill to a new example',dir:'Read both sentences. Identify the noun that “They” replaces.',quote:'A group of students visited a museum. They learned about the city’s history.',q:'Who learned about the city’s history?',options:['The students','The museum','The city'],key:0,seconds:30},
-{part:'Your final check',head:'Apply the skill to a new example',dir:'Look for the noun phrase that gives the sentence a clear meaning.',quote:'A weekend at the beach sounds relaxing. It could help my family rest.',q:'What does “It” refer to?',options:['A weekend at the beach','My family','Rest'],key:0,seconds:30}
+ {
+  "part": "Board example",
+  "head": "Example 1 · Traveling",
+  "dir": "Use the reading-skill rule you copied. Read both sentences.",
+  "quote": "I love traveling. It makes me happy.",
+  "q": "What does “It” replace?",
+  "type": "text",
+  "answers": [
+   "traveling",
+   "travelling"
+  ],
+  "seconds": 30
+ },
+ {
+  "part": "Board example",
+  "head": "Example 2 · Planning a trip",
+  "dir": "Read the first sentence before deciding what “it” means.",
+  "quote": "Planning a trip helps some people. For example, it can make them happy.",
+  "q": "What does “it” replace?",
+  "type": "text",
+  "answers": [
+   "planning a trip",
+   "planning trips",
+   "the planning of a trip"
+  ],
+  "seconds": 30
+ },
+ {
+  "part": "Board example",
+  "head": "Example 3 · People",
+  "dir": "The two pronouns in the second sentence have different referents.",
+  "quote": "Planning a trip helps some people. For example, it can make them happy.",
+  "q": "What does “them” replace?",
+  "type": "text",
+  "answers": [
+   "some people",
+   "the people",
+   "people"
+  ],
+  "seconds": 30
+ },
+ {
+  "part": "Board example",
+  "head": "Example 4 · Jaime",
+  "dir": "Find the name before the pronoun.",
+  "quote": "Jaime loves to travel. He takes five trips a year.",
+  "q": "What does “He” replace?",
+  "type": "text",
+  "answers": [
+   "jaime"
+  ],
+  "seconds": 30
+ },
+ {
+  "part": "Practice · Find the noun",
+  "head": "A new place",
+  "dir": "Read the example. Choose the noun replaced by the pronoun.",
+  "quote": "The museum has a new exhibit. It opens on Saturday.",
+  "q": "What does “It” mean?",
+  "options": [
+   "The exhibit",
+   "The museum",
+   "Saturday"
+  ],
+  "key": 0,
+  "seconds": 30
+ },
+ {
+  "part": "Practice · Find the noun",
+  "head": "Travel partners",
+  "dir": "Look at the group named in the first sentence.",
+  "quote": "Maya and Luis packed their bags. They left early.",
+  "q": "Who does “They” mean?",
+  "options": [
+   "Maya and Luis",
+   "The bags",
+   "Their parents"
+  ],
+  "key": 0,
+  "seconds": 30
+ },
+ {
+  "part": "Practice · Find the noun",
+  "head": "A person",
+  "dir": "The reading-skill box says “they” can refer to one person.",
+  "quote": "When a person travels, they often learn new things.",
+  "q": "Who does “they” mean?",
+  "options": [
+   "A person",
+   "New things",
+   "All countries"
+  ],
+  "key": 0,
+  "seconds": 30
+ },
+ {
+  "part": "Practice · Find the noun",
+  "head": "A person again",
+  "dir": "The pronoun can appear in the next sentence.",
+  "quote": "A traveler visited the town. The trip helped them feel confident.",
+  "q": "Who does “them” mean?",
+  "options": [
+   "The traveler",
+   "The town",
+   "The trip"
+  ],
+  "key": 0,
+  "seconds": 30
+ },
+ {
+  "part": "Practice · Find the noun",
+  "head": "A photograph",
+  "dir": "Find the thing described as beautiful.",
+  "quote": "Sofía took a photograph. She showed it to her friends.",
+  "q": "What does “it” mean?",
+  "options": [
+   "The photograph",
+   "Sofía",
+   "Her friends"
+  ],
+  "key": 0,
+  "seconds": 30
+ },
+ {
+  "part": "Practice · Find the noun",
+  "head": "Sofía",
+  "dir": "A name often appears before “she” or “he.”",
+  "quote": "Sofía took a photograph. She showed it to her friends.",
+  "q": "Who does “She” mean?",
+  "options": [
+   "Sofía",
+   "The photograph",
+   "Her friends"
+  ],
+  "key": 0,
+  "seconds": 30
+ },
+ {
+  "part": "Practice · Find the noun",
+  "head": "The students",
+  "dir": "Use the plural noun in the first sentence.",
+  "quote": "The students visited a park. They saw many birds.",
+  "q": "Who does “They” mean?",
+  "options": [
+   "The students",
+   "The birds",
+   "The park"
+  ],
+  "key": 0,
+  "seconds": 30
+ },
+ {
+  "part": "Practice · Find the noun",
+  "head": "A book",
+  "dir": "Ask which thing can be placed in a bag.",
+  "quote": "Nico borrowed a guidebook. He put it in his bag.",
+  "q": "What does “it” mean?",
+  "options": [
+   "The guidebook",
+   "Nico",
+   "His bag"
+  ],
+  "key": 0,
+  "seconds": 30
+ },
+ {
+  "part": "Practice · Find the noun",
+  "head": "Nico",
+  "dir": "The first sentence introduces a person and a thing.",
+  "quote": "Nico borrowed a guidebook. He put it in his bag.",
+  "q": "Who does “He” mean?",
+  "options": [
+   "Nico",
+   "The guidebook",
+   "The bag"
+  ],
+  "key": 0,
+  "seconds": 30
+ },
+ {
+  "part": "Practice · Find the noun",
+  "head": "The train",
+  "dir": "Choose the noun that can arrive at a station.",
+  "quote": "The train was late. It arrived at noon.",
+  "q": "What does “It” mean?",
+  "options": [
+   "The train",
+   "The station",
+   "Noon"
+  ],
+  "key": 0,
+  "seconds": 30
+ },
+ {
+  "part": "Practice · Find the noun",
+  "head": "Our cousins",
+  "dir": "Find the people who invited the speaker.",
+  "quote": "Our cousins invited us to their house.",
+  "q": "Who does “their” mean?",
+  "options": [
+   "Our cousins",
+   "Us",
+   "The house"
+  ],
+  "key": 0,
+  "seconds": 30
+ },
+ {
+  "part": "Practice · Find the noun",
+  "head": "A festival",
+  "dir": "Choose the event that happens every July.",
+  "quote": "Our town has a festival. It happens every July.",
+  "q": "What does “It” mean?",
+  "options": [
+   "The festival",
+   "Our town",
+   "July"
+  ],
+  "key": 0,
+  "seconds": 30
+ },
+ {
+  "part": "Skill check",
+  "head": "What pronouns do",
+  "dir": "Think about the definition you copied from the board.",
+  "quote": "Pronouns take the place of nouns or noun phrases.",
+  "q": "What does a pronoun usually replace?",
+  "options": [
+   "A noun or noun phrase",
+   "Only a number",
+   "Only an adjective"
+  ],
+  "key": 0,
+  "seconds": 30
+ },
+ {
+  "part": "Skill check",
+  "head": "Where to look",
+  "dir": "Use the strategy in your board notes.",
+  "quote": "Elena found a map. She used it to find the museum.",
+  "q": "Where should you look first to identify “She”?",
+  "options": [
+   "At the nearby name Elena",
+   "At the word museum",
+   "At the word find"
+  ],
+  "key": 0,
+  "seconds": 30
+ },
+ {
+  "part": "Skill check",
+  "head": "Two pronouns",
+  "dir": "One pronoun refers to a person; one refers to a thing.",
+  "quote": "Elena found a map. She used it to find the museum.",
+  "q": "Which pair is correct?",
+  "options": [
+   "She = Elena; it = a map",
+   "She = a map; it = Elena",
+   "She = museum; it = find"
+  ],
+  "key": 0,
+  "seconds": 30
+ },
+ {
+  "part": "Skill check",
+  "head": "Singular they",
+  "dir": "Use the special note from the reading-skill box.",
+  "quote": "When a visitor arrives, they receive a welcome card.",
+  "q": "How many visitors can “they” refer to here?",
+  "options": [
+   "One visitor",
+   "Only two visitors",
+   "Only a large group"
+  ],
+  "key": 0,
+  "seconds": 30
+ },
+ {
+  "part": "Skill check",
+  "head": "Singular them",
+  "dir": "The same idea applies to “them.”",
+  "quote": "If a student needs help, give them directions.",
+  "q": "Who does “them” refer to?",
+  "options": [
+   "A student",
+   "The directions",
+   "Several teachers"
+  ],
+  "key": 0,
+  "seconds": 30
+ },
+ {
+  "part": "Skill check",
+  "head": "Make it clear",
+  "dir": "Replace the pronoun with the noun it represents.",
+  "quote": "The beach was crowded. It was still beautiful.",
+  "q": "Which rewrite keeps the meaning?",
+  "options": [
+   "The beach was still beautiful.",
+   "The crowd was still beautiful.",
+   "The day was still beautiful."
+  ],
+  "key": 0,
+  "seconds": 30
+ },
+ {
+  "part": "Final examples",
+  "head": "A short trip",
+  "dir": "Read both sentences carefully.",
+  "quote": "We planned a short trip. It made us excited.",
+  "q": "What made “us” excited?",
+  "options": [
+   "Planning a short trip",
+   "We",
+   "Excited"
+  ],
+  "key": 0,
+  "seconds": 30
+ },
+ {
+  "part": "Final examples",
+  "head": "An adventure",
+  "dir": "Use the first sentence to find the noun.",
+  "quote": "Aisha and her friends planned an adventure. They talked about it all week.",
+  "q": "Which pair is correct?",
+  "options": [
+   "They = Aisha and her friends; it = an adventure",
+   "They = an adventure; it = Aisha",
+   "They = one friend; it = the week"
+  ],
+  "key": 0,
+  "seconds": 30
+ }
 ];
 const total=items.length;const $=id=>document.getElementById(id);let answers=Array(total).fill(''),elapsed=Array(total).fill(0),index=0,done=false,graded=false,score=0,focusChanges=0,last=performance.now(),active=document.visibilityState==='visible'&&document.hasFocus(),loadedKey='';
 function nameKey(){return 'travel80:v1:'+ $('student').value.trim().toLowerCase()+':'+$('section').value.trim().toLowerCase()}
@@ -62,7 +371,7 @@ function correct(item,answer){return item.type==='text'?item.answers.some(a=>nor
 function accrue(){const now=performance.now();if(active&&!done&&loadedKey)elapsed[index]+=Math.max(0,Math.min(now-last,3000));last=now}
 function save(){if(!loadedKey)return;localStorage.setItem(loadedKey,JSON.stringify({answers,elapsed,index,done,graded,score,focusChanges}))}
 function load(){accrue();const k=nameKey();if(!$('student').value.trim()||!$('section').value.trim()){loadedKey='';render();return}let d;try{d=JSON.parse(localStorage.getItem(k)||'null')}catch{}loadedKey=k;answers=Array.from({length:total},(_,i)=>d?.answers?.[i]??'');elapsed=Array.from({length:total},(_,i)=>Math.max(0,Math.min(Number(d?.elapsed?.[i])||0,items[i].seconds*1000)));index=Math.max(0,Math.min(total-1,Number(d?.index)||0));done=!!d?.done;graded=!!d?.graded;score=Number(d?.score)||0;focusChanges=Number(d?.focusChanges)||0;last=performance.now();render()}
-function drawQuestion(){let item=items[index];$('part').textContent=item.part;$('position').textContent='Question '+(index+1)+' of '+total;$('heading').textContent=item.head;$('direction').textContent=item.dir;$('quote').textContent=item.quote;$('prompt').textContent=item.q;$('answerLabel').textContent=item.type==='text'?'Type the noun or noun phrase':'Choose one answer';let area=$('answerArea');area.replaceChildren();let control;if(item.type==='text'){control=document.createElement('input');control.type='text';control.autocomplete='off';control.placeholder='Type a short noun phrase, then press Enter';control.value=answers[index]}else{control=document.createElement('select');let blank=new Option('Select your answer','');control.add(blank);let order=item.options.map((_,i)=>i);for(let j=order.length-1;j>0;j--){let k=Math.floor(Math.random()*(j+1));[order[j],order[k]]=[order[k],order[j]]}order.forEach(i=>control.add(new Option(item.options[i],String(i))));control.value=answers[index]}control.id='answer';control.setAttribute('aria-label',item.q);control.addEventListener('change',()=>{answers[index]=control.value;save();renderStatus();advance()});if(item.type==='text')control.addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();control.blur()}});area.append(control);$('review').textContent=answers[index]?'Your answer is saved. Check the article and think about the referent.':'Find the noun that the pronoun replaces.'}
+function drawQuestion(){let item=items[index];$('part').textContent=item.part;$('position').textContent='Question '+(index+1)+' of '+total;$('heading').textContent=item.head;$('direction').textContent=item.dir;$('quote').textContent=item.quote;$('prompt').textContent=item.q;$('answerLabel').textContent=item.type==='text'?'Type the noun or noun phrase':'Choose one answer';let area=$('answerArea');area.replaceChildren();let control;if(item.type==='text'){control=document.createElement('input');control.type='text';control.autocomplete='off';control.placeholder='Type a short noun phrase, then press Enter';control.value=answers[index]}else{control=document.createElement('select');let blank=new Option('Select your answer','');control.add(blank);let order=item.options.map((_,i)=>i);for(let j=order.length-1;j>0;j--){let k=Math.floor(Math.random()*(j+1));[order[j],order[k]]=[order[k],order[j]]}order.forEach(i=>control.add(new Option(item.options[i],String(i))));control.value=answers[index]}control.id='answer';control.setAttribute('aria-label',item.q);control.addEventListener('change',()=>{answers[index]=control.value;save();renderStatus();advance()});if(item.type==='text')control.addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();control.blur()}});area.append(control);$('review').textContent=answers[index]?'Your answer is saved. Think about the noun the pronoun replaces.':'Find the noun that the pronoun replaces.'}
 function renderStatus(){let n=answers.filter(x=>String(x).trim()!=='').length;$('count').textContent=n+' / '+total+' answered';$('fill').style.width=(n/total*100)+'%';$('finish').disabled=done||index!==total-1||n!==total||elapsed[index]<items[index].seconds*1000||!loadedKey;$('grade').disabled=!done||graded;$('download').disabled=!graded;let input=$('answer');if(input)input.disabled=done;$('student').readOnly=done;$('section').readOnly=done;if(graded){$('result').style.display='block';$('result').textContent='Score: '+score+' / '+total+' ('+Math.round(score/total*100)+'%). Download your report for your teacher.'}}
 function render(){const show=!!loadedKey&&!done;$('work').classList.toggle('active',show);if(show)drawQuestion();renderStatus()}
 function advance(){if(!loadedKey||done||index>=total-1||!String(answers[index]).trim()||elapsed[index]<items[index].seconds*1000)return;index++;last=performance.now();save();drawQuestion();renderStatus();$('work').scrollIntoView({behavior:'smooth',block:'start'})}
