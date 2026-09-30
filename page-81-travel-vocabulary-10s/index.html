@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Why We Travel | Vocabulary | Page 81</title>
+<style>
+:root{font-family:Arial,Helvetica,sans-serif;color:#203a46;background:#f4f8f5}*{box-sizing:border-box}body{margin:0}header{background:#337a5d;color:white;padding:30px 20px}main,.head{max-width:850px;margin:auto}h1{margin:8px 0;font-size:2.1rem}h2{color:#25644d}.eyebrow{font-weight:bold;letter-spacing:.12em;text-transform:uppercase;font-size:.8rem}main{padding:20px}.card{background:white;border:1px solid #dce8df;border-radius:18px;padding:24px;margin:18px 0;box-shadow:0 4px 14px #1935270c}p,li{line-height:1.55}label{display:block;font-weight:700;margin:13px 0 7px}input,select{font:inherit;width:100%;border:1px solid #a8c5b7;border-radius:9px;padding:12px;background:white}button:focus-visible,input:focus,select:focus{outline:3px solid #80c6a1;outline-offset:2px}.tag{display:inline-block;padding:7px 11px;margin:4px 6px 4px 0;border-radius:20px;background:#e5f4ea;color:#225d46;font-size:.92rem;font-weight:bold}.bar{height:12px;background:#dbe8df;border-radius:20px;overflow:hidden}.bar span{display:block;background:#3ca47b;height:100%;width:0}.question{font-size:1.15rem;font-weight:700}blockquote{margin:16px 0;padding:13px 16px;border-left:4px solid #5aaa79;background:#f1f8f3;line-height:1.55}.muted{color:#526d67}.small{font-size:.9rem}.actions{display:flex;gap:10px;flex-wrap:wrap}button{font:inherit;border:0;border-radius:10px;padding:12px 18px;background:#267658;color:white;font-weight:700}button:disabled{background:#9bb5a7}.wordbank{padding:12px;border-radius:12px;background:#fff8e8;margin:12px 0;font-weight:bold;line-height:1.8}#work{display:none}#work.active{display:block}#result{display:none;background:#e6f5ea;padding:16px;border-radius:12px}@media(max-width:600px){h1{font-size:1.7rem}.card{padding:18px}}
+</style></head><body>
+<header><div class="head"><div class="eyebrow">Unit 5 · Why We Travel · Page 81</div><h1>Travel Vocabulary Challenge</h1><p>Listen to the article audio with your teacher first. Then complete the activity at your own pace.</p><span class="tag">One question at a time</span><span class="tag">36 easy questions</span><span class="tag">Finish · Grade · Download</span></div></header>
+<main>
+<section class="card"><h2>Before you begin</h2><p><b>Your teacher will play the article audio first.</b> Listen carefully. When your teacher says to begin, complete this activity. Everything you need is on this page.</p>
+<div class="wordbank">WORD BANK: allow · deeply · host · involve · popularity · citizen · expose · interact · organize · relax</div>
+<label>Your full name</label><input id="student" placeholder="First and last name"><label>Your section</label><input id="section" placeholder="For example: 7A">
+<ol><li>Read each sentence or question carefully.</li><li>Choose the best answer from the choices.</li><li>Questions appear one at a time. Your work saves on this computer.</li><li>At the end select <b>Finish</b>, then <b>Grade</b>, then <b>Download</b>.</li></ol>
+<p><strong id="count">0 / 36 answered</strong></p><div class="bar"><span id="fill"></span></div></section>
+<section id="work" class="card"><span id="part" class="tag"></span><strong id="position" style="float:right"></strong><h2 id="heading"></h2><p id="direction"></p><blockquote id="quote"></blockquote><p id="prompt" class="question"></p><label>Choose one answer</label><select id="answer"></select><p class="muted small" id="review">Choose the answer that makes the most sense.</p></section>
+<section class="card"><h2>Finish your work</h2><p>Finish unlocks after all questions are answered.</p><div class="actions"><button id="finish" disabled>Finish</button><button id="grade" disabled>Grade</button><button id="download" disabled>Download</button></div><p id="message"></p><div id="result"></div></section>
+</main><script>
+const items=[
+["Book vocabulary","Machu Picchu","Machu Picchu has increased in ___ over the years.","popularity",["popularity","citizen","host"]],
+["Book vocabulary","Global warming","Many people are ___ concerned about global warming.","deeply",["deeply","host","relax"]],
+["Book vocabulary","Language learning","Learning the language ___ you to get more out of a visit.","allows",["allows","hosts","relaxes"]],
+["Book vocabulary","Local people","If you ___ with local people, you can practice speaking their language.","interact",["interact","organize","expose"]],
+["Book vocabulary","World citizen","A ___ of the world feels comfortable living in many cultures.","citizen",["citizen","popularity","host"]],
+["Book vocabulary","Trip preparation","A successful trip ___ a lot of preparation.","involves",["involves","relaxes","allows"]],
+["Book vocabulary","Travel company","A travel company can ___ your trip.","organize",["organize","interact","expose"]],
+["Book vocabulary","New experiences","Traveling ___ people to new experiences.","exposes",["exposes","hosts","organizes"]],
+["Book vocabulary","Vacation","If you want to ___ on vacation, sit on a warm beach and read.","relax",["relax","involve","interact"]],
+["Book vocabulary","Polite guests","Polite guests bring their ___ a gift from home.","host",["host","citizen","popularity"]],
+["Meaning check","allow","Which meaning is closest to allow?","permit",["permit","hide","visit"]],
+["Meaning check","deeply","Which meaning is closest to deeply?","very strongly",["very strongly","very quickly","very loudly"]],
+["Meaning check","host","A host is usually a person who...","welcomes or receives guests",["welcomes or receives guests","buys an airplane","studies a map"]],
+["Meaning check","involve","If an activity involves planning, planning is...","a necessary part of it",["a necessary part of it","not connected to it","impossible"]],
+["Meaning check","popularity","Popularity means...","being liked by many people",["being liked by many people","being very old","being expensive"]],
+["Meaning check","citizen","A citizen is...","a member of a country or community",["a member of a country or community","a hotel room","a travel ticket"]],
+["Meaning check","expose","Travel can expose you to new cultures. This means it can...","introduce you to them",["introduce you to them","remove them","forget them"]],
+["Meaning check","interact","To interact with local people means to...","communicate or spend time with them",["communicate or spend time with them","avoid everyone","sleep"]],
+["Meaning check","organize","To organize a trip means to...","plan and arrange it",["plan and arrange it","cancel every part","forget it"]],
+["Meaning check","relax","To relax means to...","rest and become calm",["rest and become calm","become worried","work faster"]],
+["Easy practice","At a café","You talk with local people at a café. You ___ with them.","interact",["interact","host","relax"]],
+["Easy practice","A beach day","You sit quietly on the beach because you want to ___.","relax",["relax","organize","expose"]],
+["Easy practice","Planning","You book the hotel and transportation. You ___ the trip.","organize",["organize","interact","host"]],
+["Easy practice","New culture","A trip introduces Ana to a different culture. It ___ her to new ideas.","exposes",["exposes","relaxes","hosts"]],
+["Easy practice","Welcoming someone","Your family welcomes a visitor into your home. Your family will ___ the visitor.","host",["host","expose","organize"]],
+["Easy practice","A serious concern","Marco is very concerned about pollution. He is ___ concerned.","deeply",["deeply","popularly","relax"]],
+["Easy practice","Permission","The museum ___ visitors to take photos.","allows",["allows","interacts","relaxes"]],
+["Easy practice","Many tasks","Planning a vacation ___ choosing flights and hotels.","involves",["involves","hosts","relaxes"]],
+["Reflect","Local language","Would learning the local language help you communicate with people?","Yes",["Yes","No, never","Only on airplanes"]],
+["Reflect","Local family","Staying with a local family could help you learn about...","local life and culture",["local life and culture","only airports","only airplanes"]],
+["Reflect","Local artists","Making crafts with local artists could help you...","learn a local skill",["learn a local skill","avoid local culture","stay asleep"]],
+["Reflect","Local farm","Volunteering at a local farm would probably involve...","helping with farm activities",["helping with farm activities","flying a plane","checking into a hotel"]],
+["Reflect","Local college","Taking a class at a local college could help you...","meet people and learn something",["meet people and learn something","avoid everyone","pack a suitcase"]],
+["Reflect","Cooking","Cooking a meal with a local family could teach you about...","local food and traditions",["local food and traditions","airport security","hotel prices"]],
+["Final review","Best word","Which word means 'plan and arrange'?","organize",["organize","relax","citizen"]],
+["Final review","Best word","Which word means 'communicate with other people'?","interact",["interact","popularity","allow"]]
+].map(x=>({part:x[0],head:x[1],q:x[2],correct:x[3],options:x[4],seconds:10}));
+const total=items.length,$=id=>document.getElementById(id);let answers=Array(total).fill(""),elapsed=Array(total).fill(0),index=0,done=false,graded=false,score=0,focusChanges=0,last=performance.now(),active=document.visibilityState==="visible"&&document.hasFocus(),loadedKey="";
+function key(){return "travel81:vocab10s:"+$("student").value.trim().toLowerCase()+":"+$("section").value.trim().toLowerCase()}
+function accrue(){let now=performance.now();if(active&&!done&&loadedKey)elapsed[index]+=Math.max(0,Math.min(now-last,3000));last=now}
+function save(){if(loadedKey)localStorage.setItem(loadedKey,JSON.stringify({answers,elapsed,index,done,graded,score,focusChanges}))}
+function load(){let k=key();if(!$("student").value.trim()||!$("section").value.trim()){loadedKey="";render();return}let d;try{d=JSON.parse(localStorage.getItem(k)||"null")}catch{}loadedKey=k;answers=Array.from({length:total},(_,i)=>d?.answers?.[i]??"");elapsed=Array.from({length:total},(_,i)=>Math.min(Number(d?.elapsed?.[i])||0,10000));index=Math.min(total-1,Number(d?.index)||0);done=!!d?.done;graded=!!d?.graded;score=Number(d?.score)||0;focusChanges=Number(d?.focusChanges)||0;render()}
+function draw(){let x=items[index];$("part").textContent=x.part;$("position").textContent="Question "+(index+1)+" of "+total;$("heading").textContent=x.head;$("direction").textContent="Read carefully and choose the best answer.";$("quote").textContent=x.q;$("prompt").textContent="What is the best answer?";let s=$("answer");s.innerHTML="<option value=''>Select your answer</option>";[...x.options].sort(()=>Math.random()-.5).forEach(o=>s.add(new Option(o,o)));s.value=answers[index];s.disabled=done}
+function status(){let n=answers.filter(Boolean).length;$("count").textContent=n+" / "+total+" answered";$("fill").style.width=(n/total*100)+"%";$("finish").disabled=done||index!==total-1||n!==total||elapsed[index]<10000||!loadedKey;$("grade").disabled=!done||graded;$("download").disabled=!graded;if(graded){$("result").style.display="block";$("result").textContent="Score: "+score+" / "+total+" ("+Math.round(score/total*100)+"%). Download your report for your teacher."}}
+function render(){let show=!!loadedKey&&!done;$("work").classList.toggle("active",show);if(show)draw();status()}
+function advance(){if(!loadedKey||done||index>=total-1||!answers[index]||elapsed[index]<10000)return;index++;last=performance.now();save();draw();status();$("work").scrollIntoView({behavior:"smooth",block:"start"})}
+$("student").addEventListener("change",load);$("section").addEventListener("change",load);$("answer").addEventListener("change",e=>{answers[index]=e.target.value;save();status();advance()});
+setInterval(()=>{accrue();advance();save();status()},1000);window.addEventListener("blur",()=>{accrue();active=false;focusChanges++;save()});window.addEventListener("focus",()=>{last=performance.now();active=true});document.addEventListener("visibilitychange",()=>{accrue();active=document.visibilityState==="visible"&&document.hasFocus();last=performance.now();if(!active)focusChanges++;save()});
+$("finish").onclick=()=>{done=true;save();render();$("message").textContent="Submitted. Select Grade, then Download."};
+$("grade").onclick=()=>{score=items.reduce((n,x,i)=>n+(answers[i]===x.correct?1:0),0);graded=true;save();status();$("message").textContent="Graded. Download your report."};
+$("download").onclick=()=>{let lines=["PAGE 81 — TRAVEL VOCABULARY","Name: "+$("student").value,"Section: "+$("section").value,"Score: "+score+"/"+total,"Percentage: "+Math.round(score/total*100)+"%","Focus changes: "+focusChanges,""];items.forEach((x,i)=>lines.push((i+1)+". "+x.q,"Student answer: "+answers[i],"Result: "+(answers[i]===x.correct?"Correct":"Incorrect"),"Correct answer: "+x.correct,""));let b=new Blob([lines.join("\n")],{type:"text/plain"}),a=document.createElement("a");a.href=URL.createObjectURL(b);a.download="Page_81_Vocabulary_"+$("student").value.trim().replace(/[^a-z0-9]+/gi,"_")+".txt";a.click()};
+["copy","cut","paste","dragstart","contextmenu"].forEach(ev=>document.addEventListener(ev,e=>e.preventDefault()));render();
+</script></body></html>
