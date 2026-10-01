@@ -30,7 +30,7 @@ button{font:inherit;border:0;border-radius:12px;padding:13px 18px;cursor:pointer
 <section id="finish" class="hidden"><div class="panel end"><div style="font-size:60px">🏆</div><h2>Challenge Complete!</h2><p id="finalscore" style="font-size:22px"></p>
 <h3>FINAL DISCUSSION BOSS</h3><div class="prompt">Which explanation is strongest for understanding why people enjoy horror: <b>The Rush, The Safety Net, or The Narrative?</b> Defend your answer with an example from the video.</div>
 <div class="prompt">Could a horror experience use all three explanations at the same time? Create an example together.</div>
-<button class="primary" id="restart">PLAY AGAIN ↻</button></div></section>
+<div class="nav" style="gap:12px;flex-wrap:wrap"><button class="primary" id="grade">GRADE ✓</button><button class="primary" id="download" disabled>DOWNLOAD RESULTS ⬇</button><button class="primary" id="restart">PLAY AGAIN ↻</button></div><div id="gradeResult" class="feedback"></div></div></section>
 </main>
 <script>
 const qs=[
@@ -47,12 +47,26 @@ const qs=[
 ["A tense soundtrack and dark hallway make you alert before anything frightening even appears.","Rush","Can anticipation create a physical fear response before a threat appears?"],
 ["You keep playing because you need to discover why the abandoned building is haunted.","Narrative","What information would the story need to reveal slowly to maintain curiosity?"]
 ];
-let order=[],i=0,score=0,locked=false;
+let order=[],i=0,score=0,locked=false,results=[];
 const $=id=>document.getElementById(id);
 function shuffle(a){return a.map(v=>[Math.random(),v]).sort((a,b)=>a[0]-b[0]).map(x=>x[1])}
 function show(){locked=false;const q=order[i];$("progress").textContent="Challenge "+(i+1)+" of "+order.length;$("score").textContent="Score: "+score;$("scenario").textContent=q[0];$("feedback").textContent="";$("feedback").className="feedback";$("talk").classList.add("hidden");$("next").classList.add("hidden");document.querySelectorAll(".choice").forEach(b=>b.disabled=false)}
-$("start").addEventListener("click",()=>{order=shuffle(qs.slice());i=0;score=0;$("intro").classList.add("hidden");$("game").classList.remove("hidden");show()});
-document.querySelectorAll(".choice").forEach(b=>b.addEventListener("click",()=>{if(locked)return;locked=true;document.querySelectorAll(".choice").forEach(x=>x.disabled=true);let q=order[i];if(b.dataset.a===q[1]){score++;$("feedback").textContent="✓ Correct! "+q[1]+" best matches this situation.";$("feedback").classList.add("correct")}else{$("feedback").textContent="Not this time. Best answer: "+q[1]+".";$("feedback").classList.add("wrong")}$("score").textContent="Score: "+score;$("talk").textContent="💬 TALK IT OUT: "+q[2];$("talk").classList.remove("hidden");$("next").classList.remove("hidden")}));
+$("start").addEventListener("click",()=>{order=shuffle(qs.slice());i=0;score=0;results=[];$("intro").classList.add("hidden");$("game").classList.remove("hidden");show()});
+document.querySelectorAll(".choice").forEach(b=>b.addEventListener("click",()=>{if(locked)return;locked=true;document.querySelectorAll(".choice").forEach(x=>x.disabled=true);let q=order[i];results.push({question:q[0],chosen:b.dataset.a,correct:q[1],isCorrect:b.dataset.a===q[1]});if(b.dataset.a===q[1]){score++;$("feedback").textContent="✓ Correct! "+q[1]+" best matches this situation.";$("feedback").classList.add("correct")}else{$("feedback").textContent="Not this time. Best answer: "+q[1]+".";$("feedback").classList.add("wrong")}$("score").textContent="Score: "+score;$("talk").textContent="💬 TALK IT OUT: "+q[2];$("talk").classList.remove("hidden");$("next").classList.remove("hidden")}));
 $("next").addEventListener("click",()=>{i++;if(i<order.length)show();else{$("game").classList.add("hidden");$("finish").classList.remove("hidden");$("finalscore").textContent=($("team").value||"Your class")+" scored "+score+" / "+order.length+"."}});
-$("restart").addEventListener("click",()=>{$("finish").classList.add("hidden");$("intro").classList.remove("hidden")});
+$("grade").addEventListener("click",()=>{
+ const pct=Math.round((score/order.length)*100);
+ $("gradeResult").innerHTML="<strong>GRADE: "+score+" / "+order.length+" — "+pct+"%</strong>";
+ $("download").disabled=false;
+});
+$("download").addEventListener("click",()=>{
+ const pct=Math.round((score/order.length)*100);
+ const team=$("team").value||"Class";
+ let lines=["RUSH vs. SAFETY NET vs. NARRATIVE","11th Grade Psychology of Horror","Team/Class: "+team,"Score: "+score+" / "+order.length,"Percentage: "+pct+"%","","ANSWERS"];
+ results.forEach((r,n)=>lines.push((n+1)+". "+r.question+"\n   Chosen: "+r.chosen+" | Correct: "+r.correct+" | "+(r.isCorrect?"CORRECT":"INCORRECT")));
+ lines.push("","FINAL DISCUSSION","1. Which explanation is strongest for understanding why people enjoy horror? Defend with evidence from the video.","2. Could a horror experience use all three explanations at once? Create an example.");
+ const blob=new Blob([lines.join("\n")],{type:"text/plain"});
+ const a=document.createElement("a"); a.href=URL.createObjectURL(blob); a.download="horror-game-results-"+team.replace(/[^a-z0-9]+/gi,"-").toLowerCase()+".txt"; a.click(); setTimeout(()=>URL.revokeObjectURL(a.href),500);
+});
+$("restart").addEventListener("click",()=>{$("finish").classList.add("hidden");$("intro").classList.remove("hidden");$("gradeResult").textContent="";$("download").disabled=true});
 </script></body></html>
